@@ -1,0 +1,16 @@
+#!/bin/sh
+
+CONF_PATH=/conf
+CONF_FILE=$CONF_PATH/edge.conf
+CONF_EXAMPLE=/etc/n2n/edge.conf.sample
+CONF_EXAMPLE_OUTPUT=$CONF_PATH/edge.conf.sample
+
+if test -f "$CONF_FILE"; then
+    edge $CONF_FILE
+else
+    echo "config file: $CONF_FILE not exist"
+    echo "please add config files to /conf"
+    mkdir -p /conf
+    cp $CONF_EXAMPLE $CONF_EXAMPLE_OUTPUT
+    echo "see /conf/edge.conf.example"
+fi
