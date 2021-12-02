@@ -6,7 +6,7 @@ CONF_EXAMPLE=/etc/n2n/edge.conf.sample
 CONF_EXAMPLE_OUTPUT=$CONF_PATH/edge.conf.sample
 
 if test -f "$CONF_FILE"; then
-    edge $CONF_FILE
+    edge $CONF_FILE -f
 else
     echo "config file: $CONF_FILE not exist"
     echo "please add config files to /conf"
