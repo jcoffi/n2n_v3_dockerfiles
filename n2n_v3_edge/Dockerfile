@@ -15,7 +15,7 @@ cmake --build . && \
 cmake --install .
 
 FROM alpine:latest
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk update && apk upgrade --no-cache && apk add openssl zstd-libs --no-cache
+RUN apk update && apk upgrade --no-cache && apk add openssl zstd-libs --no-cache
 COPY --from=build-env /usr/local/sbin/supernode /usr/sbin/
 COPY --from=build-env /usr/local/sbin/edge /usr/sbin/
 COPY --from=build-env /root/n2n/packages/etc/n2n /etc/n2n
