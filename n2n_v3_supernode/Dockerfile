@@ -2,13 +2,13 @@ FROM alpine:latest AS build-env
 
 MAINTAINER <doraismydora@gmail.com>
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk update && apk upgrade
+RUN apk update && apk upgrade
 RUN apk add build-base openssl-dev zstd-dev git cmake linux-headers
 
 WORKDIR /root
 
-RUN cd /root && git config --global http.proxy 10.10.10.50:20831 && \
-git clone --depth 1 --branch 3.0 https://github.com/ntop/n2n.git && \
+RUN cd /root && \
+git clone --depth 1 --branch 3.1.1 https://github.com/ntop/n2n.git && \
 cd n2n && mkdir build && cd build && \
 cmake .. "-DN2N_OPTION_USE_OPENSSL=ON" "-DN2N_OPTION_USE_ZSTD=ON" && \
 cmake --build . && \
