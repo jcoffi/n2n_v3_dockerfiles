@@ -1,11 +1,15 @@
-name: n2n_v3_edge Docker Image CI
+name: n2n_v3_supernode Docker Image CI
 
 on:
   push:
-    paths: n2n_v3_edge/Dockerfile
+    paths: 
+      - n2n_v3_supernode/Dockerfile
+        n2n_v3_supernode/start
     branches: [ master ]
   pull_request:
-    paths: n2n_v3_edge/Dockerfile
+    paths: 
+      - n2n_v3_supernode/Dockerfile
+        n2n_v3_supernode/start
     branches: [ master ]
 
 jobs:
@@ -22,7 +26,7 @@ jobs:
     - name: Build docker and push
       uses: docker/build-push-action@v3
       with:
-          context: ./n2n_v3_edge
+          context: ./n2n_v3_supernode
           push: true
-          tags: dorasan/n2n_v3_edge:latest
+          tags: dorasan/n2n_v3_supernode:latest
           
