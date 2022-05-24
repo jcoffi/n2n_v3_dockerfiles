@@ -2,14 +2,10 @@ name: n2n_v3_edge Docker Image CI
 
 on:
   push:
-    paths: 
-      - n2n_v3_edge/Dockerfile
-        n2n_v3_edge/start
+    paths: n2n_v3_edge
     branches: [ master ]
   pull_request:
-    paths:  
-      - n2n_v3_edge/Dockerfile
-        n2n_v3_edge/start
+    paths: n2n_v3_edge
     branches: [ master ]
 
 jobs:
