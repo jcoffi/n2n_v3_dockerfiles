@@ -2,13 +2,12 @@ FROM alpine:latest AS build-env
 
 MAINTAINER <doraismydora@gmail.com>
 
-RUN apk update && apk upgrade
-RUN apk add build-base openssl-dev zstd-dev git cmake linux-headers
+RUN apk update && apk upgrade && apk add build-base openssl-dev zstd-dev git cmake linux-headers
 
 WORKDIR /root
 
 RUN cd /root && \
-git clone --depth 1 --branch 3.1.1 https://github.com/ntop/n2n.git && \
+git clone --depth 1 --branch 3.1.0 https://github.com/ntop/n2n.git && \
 cd n2n && mkdir build && cd build && \
 cmake .. "-DN2N_OPTION_USE_OPENSSL=ON" "-DN2N_OPTION_USE_ZSTD=ON" && \
 cmake --build . && \
