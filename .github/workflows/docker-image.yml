@@ -26,4 +26,10 @@ jobs:
           context: ./n2n_v3_supernode
           push: true
           tags: dorasan/n2n_v3_supernode:latest
+    - name: Build edge docker and push
+      uses: docker/build-push-action@v3
+      with:
+          context: ./n2n_v3_edge
+          push: true
+          tags: dorasan/n2n_v3_edge:latest
       
