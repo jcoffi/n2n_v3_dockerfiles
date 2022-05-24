@@ -20,6 +20,13 @@ jobs:
       with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: update latest n2n version
+      run: git clone https://github.com/ntop/n2n.git && \
+           cd n2n && \
+           export N2N_VERSION=$(git tag -l "3.*" --sort=-v:refname|head -n1) && \
+           cd .. && \
+           sed -i "s/--branch 3\.[0-9\.]*/--branch $N2N_VERSION/" ./n2n_v3_{edge,supernode}/Dockerfile && \
+           cat ./n2n_v3_{edge,supernode}/Dockerfile
     - name: Build supernode docker and push
       uses: docker/build-push-action@v3
       with:
