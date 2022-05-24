@@ -2,7 +2,8 @@ FROM alpine:latest AS build-env
 
 MAINTAINER <doraismydora@gmail.com>
 
-RUN apk update && apk upgrade && apk add build-base openssl-dev zstd-dev git cmake linux-headers
+RUN apk update && apk upgrade 
+RUN apk add build-base openssl-dev zstd-dev git cmake linux-headers
 
 WORKDIR /root
 
