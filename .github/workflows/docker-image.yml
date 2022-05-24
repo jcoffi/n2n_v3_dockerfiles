@@ -1,17 +1,16 @@
-name: Docker Image CI
+name: n2n_v3_edge Docker Image CI
 
 on:
   push:
+    paths: n2n_v3_edge/Dockerfile
     branches: [ master ]
   pull_request:
+    paths: n2n_v3_edge/Dockerfile
     branches: [ master ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - name: Check out the repo
       uses: actions/checkout@v3
@@ -20,13 +19,7 @@ jobs:
       with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Build supernode docker and push
-      uses: docker/build-push-action@v3
-      with:
-          context: ./n2n_v3_supernode
-          push: true
-          tags: dorasan/n2n_v3_supernode:latest
-    - name: Build edge docker and push
+    - name: Build docker and push
       uses: docker/build-push-action@v3
       with:
           context: ./n2n_v3_edge
