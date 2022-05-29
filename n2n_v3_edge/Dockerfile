@@ -20,4 +20,5 @@ COPY --from=build-env /usr/local/sbin/supernode /usr/sbin/
 COPY --from=build-env /usr/local/sbin/edge /usr/sbin/
 COPY --from=build-env /root/n2n/packages/etc/n2n /etc/n2n
 COPY ./start /usr/sbin/start_edge
+RUN chmod 755 /usr/sbin/start_edge
 CMD /usr/sbin/start_edge
